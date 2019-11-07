@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function init() {
+            butt = document.getElementById("button");
+            butt.onclick = check
+        }
+        function check() {
+            text = document.getElementById("text").value;
+            console.log(text)
+        }
+        window.onload = init
+        
+        
+        
+        var numberShips = 0;
+
+        while (numberShips < 3) {
+
+            var directionShip = Math.floor(Math.random() * 2);
+            // goriz
+            if (directionShip === 0) {
+
+                let charOne = Math.floor(Math.random() * (5));   // 0-5
+                let charTwo = Math.floor(Math.random() * (5));   // 0-5
+
+                var a = String(charOne) + String(charTwo);
+                var b = String(charOne) + String(Number(charTwo) + 1);
+                var c = String(charOne) + String(Number(charTwo) + 2);
+
+                numberShips++;
+
+                //vert
+            } else if (directionShip === 1) {
+                let charOne = Math.floor(Math.random() * (5));   // 0-5
+                let charTwo = Math.floor(Math.random() * (5));   // 0-5
+
+                var a = String(charOne) + String(charTwo);
+                var b = String(Number(charOne) + 1) + String(charTwo);
+                var c = String(Number(charOne) + 2) + String(charTwo);
+                numberShips++;
+
+                let shipLocate = Math.floor(Math.random() * (this.boardSize - 2));
+            }
+            console.log(directionShip, a, b, c)
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <form>
+        <input type="text" id="text">
+        <input type="button" id="button" value="button">
+    </form>
+</body>
+
+</html>
