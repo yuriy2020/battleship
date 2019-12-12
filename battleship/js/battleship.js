@@ -34,12 +34,12 @@ let model = {
     shipsSunk: 0,
     // длина корабля
     shipLength: 3,
-    //fire 
+    //fire
     fire: function (guess) {
         //получаем объект корабля
         for (let i = 0; i < this.numShips; i++) {
             let ship = this.ships[i];
-            //  каждый корабль вытаскивается из массива: ship[0] = { location:[10,20,30], hits:["","",""] }  
+            //  каждый корабль вытаскивается из массива: ship[0] = { location:[10,20,30], hits:["","",""] }
             let location = ship.location;
             // indexOf возвращает -1 если нет guess в location
             let index = location.indexOf(guess);
@@ -62,9 +62,9 @@ let model = {
 
     //метод получает свойства корабля и проверяет есть ли попадания
     isSunk: function (ship) {
-        /*Если есть хотя бы одна клетка, в которую еще не попал 
+        /*Если есть хотя бы одна клетка, в которую еще не попал
         игрок, то корабль еще жив и метод возвращает false.*/
-        for (i = 0; i < this.shipLength; i++) {
+        for (let i = 0; i < this.shipLength; i++) {
             if (ship.hits[i] !== "hit") return false;
         }
         return true;
@@ -104,7 +104,7 @@ let model = {
             //      3 поле 3 корабля === 1,2,3 полю 1го корабля  ИЛИ === 1,2,3 полю 2го корабля
 
             function coinsidence() {
-                
+
                 return true;
             }
         }
@@ -123,7 +123,7 @@ let contr = {
             this.guesses++;
             console.log("guesses " + this.guesses);
 
-            // стреляем 
+            // стреляем
             //  model.fire(location) возвращает true
             let hit = model.fire(location);  // ??? не понятный момент почему location
             if (hit && model.shipsSunk === model.numShips) {
@@ -132,7 +132,7 @@ let contr = {
             }
         }
     },
-    //преобразование. проверка и возврат введенных координат 
+    //преобразование. проверка и возврат введенных координат
     parseGuess: function (guess) {
         guess = guess.toUpperCase();
         let alphavet = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];
@@ -155,7 +155,7 @@ let contr = {
     }
 }
 
-// вызывается каждый раз при нажатии на кнопку 
+// вызывается каждый раз при нажатии на кнопку
 function handleFireButton() {
     var guessInput = document.getElementById("guessInput");
     var guess = guessInput.value
