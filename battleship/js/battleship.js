@@ -1,5 +1,3 @@
-
-
 let view = {
     // показывает промахи на поле
     displayMiss: function (location) {
@@ -26,9 +24,9 @@ let model = {
     numShips: 3,
     // позиция и состояние кораблей
     ships: [
-        { location: [0, 0, 0], hits: ["", "", ""] },
-        { location: [0, 0, 0], hits: ["", "", ""] },
-        { location: [0, 0, 0], hits: ["", "", ""] }
+        {location: [0, 0, 0], hits: ["", "", ""]},
+        {location: [0, 0, 0], hits: ["", "", ""]},
+        {location: [0, 0, 0], hits: ["", "", ""]}
     ],
     // потоплено
     shipsSunk: 0,
@@ -46,7 +44,7 @@ let model = {
             if (index >= 0) {
                 ship.hits[index] = "hit";
                 view.displayHit(guess);
-                view.displayMsg("Попал !!!")
+                view.displayMsg("Попал !!!");
                 // проверка потоплен ли корабль
                 if (this.isSunk(ship)) {
                     view.displayMsg("Ты потопил корабль!");
@@ -56,7 +54,7 @@ let model = {
             }
         }
         view.displayMiss(guess);
-        view.displayMsg("Мимо !")
+        view.displayMsg("Мимо !");
         return false;
     },
 
@@ -79,6 +77,7 @@ let model = {
 
             let charOne = Math.floor(Math.random() * (this.boardSize - 2));   // 0-5
             let charTwo = Math.floor(Math.random() * (this.boardSize - 2));   // 0-5
+            console.log(charOne + "" + charTwo)
 
 
             // goriz
@@ -92,11 +91,18 @@ let model = {
             } else if (directionShip === 1 && coinsidence()) {
                 (this.ships[numberShips]).location[0] = String(charOne) + String(charTwo);
                 (this.ships[numberShips]).location[1] = String(Number(charOne) + 1) + String(charTwo);
-                (this.ships[numberShips]).location[2] = String(Number(charOne) + 2) + String(charTwo);;
+                (this.ships[numberShips]).location[2] = String(Number(charOne) + 2) + String(charTwo);
+                ;
                 numberShips++;
-            };
+            }
 
             function coinsidence() {
+                for (let i = 0; i < numberShips; i++) {
+                    for (let j = 0; j < 3; j++) {
+                        if (model.ships[i].location[j] == (charOne + "" + charTwo)) return false;
+                    }
+
+                }
 
                 return true;
             }
@@ -155,6 +161,7 @@ function handleFireButton() {
     contr.processGuess(guess);
     guessInput.value = "";
 };
+
 // фунция кнопки Fire
 function init() {
     var fireButton = document.getElementById("fireButton");
@@ -163,6 +170,7 @@ function init() {
     var guessInput = document.getElementById("guessInput");
     guessInput.onkeypress = pressEnter;
 }
+
 window.onload = init;
 
 
