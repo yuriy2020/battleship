@@ -96,13 +96,6 @@ let model = {
                 numberShips++;
             };
 
-            // если 1 поле 2 корабля === 1,2,3 полю 1го корабля
-            // если 2 поле 2 корабля === 1,2,3 полю 1го корабля
-            //      3 поле 2 корабля === 1,2,3 полю 1го корабля
-            //      1 поле 3 корабля === 1,2,3 полю 1го корабля  ИЛИ === 1,2,3 полю 2го корабля
-            //      2 поле 3 корабля === 1,2,3 полю 1го корабля  ИЛИ === 1,2,3 полю 2го корабля
-            //      3 поле 3 корабля === 1,2,3 полю 1го корабля  ИЛИ === 1,2,3 полю 2го корабля
-
             function coinsidence() {
 
                 return true;
@@ -153,7 +146,7 @@ let contr = {
         }
         return null;  // если не пройдет проверку
     }
-}
+};
 
 // вызывается каждый раз при нажатии на кнопку
 function handleFireButton() {
@@ -181,11 +174,10 @@ function pressEnter(e) {
     }
 };
 
-
 model.generateShip();
-console.log((model.ships[0]).location)
-console.log((model.ships[1]).location)
-console.log((model.ships[2]).location)
+// console.log((model.ships[0]).location)
+// console.log((model.ships[1]).location)
+// console.log((model.ships[2]).location)
 
 
 
